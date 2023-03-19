@@ -5,6 +5,8 @@
 ![*Built for QEMU*](https://img.shields.io/badge/Built%20for-QEMU-orange?style=for-the-badge&logo=qemu)
 ![*Made with PyQt5.*](https://img.shields.io/badge/Made%20with-PyQt5-green?style=for-the-badge&logo=qt)
 
+[**LICENSE - Apache 2.0**](https://github.com/neek8044/qemUI/blob/master/LICENSE)
+
 ### Dependencies
 - QEMU
   - Currently, qemu-system-x86_64 is the only one working and should be installed for the script to work.

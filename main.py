@@ -1,7 +1,7 @@
 # qemUI - Interface for Qemu
 # Nick Roussis (Neek8044)
 # https://github.com/neek8044
-# This project is licensed under GNU GPLv3. See LICENSE file for more information.
+# This project is licensed under Apache License 2.0. See the LICENSE file (https://github.com/neek8044/qemUI/blob/master/LICENSE) for more information.
 
 
 from PyQt5 import QtWidgets
