@@ -1,6 +1,6 @@
 # qemUI - Interface for Qemu
 # Nick Roussis (Neek8044)
-# https://github.com/neek8044
+# https://github.com/neek8044/qemUI
 # This project is licensed under Apache License 2.0. See the LICENSE file (https://github.com/neek8044/qemUI/blob/master/LICENSE) for more information.
 
 
@@ -23,7 +23,19 @@ def start_virtual_machine():
         memory_in_mb = int(txt_memory_mb.text())
         enable_kvm = chk_enable_kvm.isChecked()
         cpu_host = chk_cpu_host.isChecked()
-        qemu_command = f"qemu-system-x86_64 {'-enable-kvm' if enable_kvm else ''} {'-cpu host' if cpu_host else ''} -smp {number_of_cores} -m {memory_in_mb} -hda {vm_disk_file[0]} -cdrom {cdrom_image_file[0]}"
+
+        hda = vm_disk_file[0]
+        try:
+            cdrom = cdrom_image_file[0]
+        except:
+            msg_cdrom_warning = QMessageBox()
+            msg_cdrom_warning.setWindowTitle("No CD-ROM")
+            msg_cdrom_warning.setText("No CD-ROM (.iso) was selected. QEMU will start without one.")
+            msg_cdrom_warning.exec()
+            cdrom = ''
+
+        qemu_command = f"qemu-system-x86_64 {'-enable-kvm' if enable_kvm else ''} {'-cpu host' if cpu_host else ''} -smp {number_of_cores} -m {memory_in_mb} -hda {hda} {'-cdrom' if cdrom != '' else ''} {cdrom}"
+
         print(qemu_command if debug else "\r")
         subprocess.Popen(
             qemu_command,
@@ -41,10 +53,10 @@ def start_virtual_machine():
         msg_value_error.exec()
     
     except IndexError:
-        msg_value_error = QMessageBox()
-        msg_value_error.setWindowTitle("Index Error")
-        msg_value_error.setText("Please fill up the whole form before starting QEMU.")
-        msg_value_error.exec()
+        msg_index_error = QMessageBox()
+        msg_index_error.setWindowTitle("Index Error")
+        msg_index_error.setText("Please fill up the whole form before starting QEMU.")
+        msg_index_error.exec()
 
 
 # Open HDA file
