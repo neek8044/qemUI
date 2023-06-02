@@ -1,4 +1,7 @@
 # qemUI
+
+**Repository has been archived. I initially worked on this because virt-manager and libvirt wouldn't work on my distro. Since I have switched and can now use libvirt, there is no use for me to update this project. Feel free to fork it in case you need it (doubt)**
+
 **Graphical Interface application to run QEMU with ease.**
 
 ![*Programmed in Python*](https://img.shields.io/badge/Programmed%20in-Python-yellow?style=for-the-badge&logo=python)
